@@ -20,4 +20,8 @@
         }
     }
 
-    header("location:index.php"); /*si les conditions ne sont pas remplies -false, null, 0- redirection sur le fichier d'origine*/
+    header("location:index.php");
+    
+     /*si les conditions ne sont pas remplies -false, null, 0- redirection sur le fichier d'origine*/
+
+   
