@@ -54,6 +54,15 @@
             <input type="submit" class="btn btn-primary" name="submit" value="Ajouter un produit">
             
         </p>
+
+<?php
+
+if (isset($_SESSION["message"])){
+    echo $_SESSION["message"];
+}
+     
+
+?>
     </form>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

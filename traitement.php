@@ -18,7 +18,9 @@
             $_SESSION['products'][]=$product; /*on enregistre la var $product, un tableau, dans la session, 
             un autre tableau contenant des "products" au pluriel*/
             $_SESSION['message'] = "Le produit a bien été ajouté";
+        
         }
     }
 
     header("location:index.php"); /*si les conditions ne sont pas remplies -false, null, 0- redirection sur le fichier d'origine*/
+    $_SESSION['message'] = "Echec, veuillez réessayer";
