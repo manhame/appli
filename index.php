@@ -54,24 +54,6 @@
             <input type="submit" class="btn btn-primary" name="submit" value="Ajouter un produit">
             
         </p>
-              
-<?php
-
-if (isset($_SESSION['message'])){
-    echo $_SESSION['message'];
-}/*
-if(!isset($_SESSION['products']) || empty($_SESSION['products'])) {
-    echo "<div class='alert alert-warning' role='alert'>
-        aucun produit en session 
-        </div>";
-}
-    else {
-        echo "<div class='alert alert-warning' role='alert'>
-        Le produit a bien été ajouté au panier ! 
-        </div>";    
-    }
-     */  
-?>        
     </form>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

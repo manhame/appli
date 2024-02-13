@@ -21,22 +21,4 @@
         }
     }
 
-    header("location:index.php");
-    $_SESSION['message'] = "Echec, veuillez réessayer";
-    
-     /*si les conditions ne sont pas remplies -false, null, 0- redirection sur le fichier d'origine*/
-
-     if(isset ($_GET[action])){
-
-        switch($_GET[action]){
-
-            case "add" : <form action="traitement.php?action=add" method="post">
-            case "delete" : <form action="traitement.php?action=delete" method="post">,
-            case "clear" : <form action="traitement.php?action=clear" method="post">,
-            case "up-qtt" : <form action="traitement.php?action=up-qtt" method="post">,
-            case "down-qtt" : <form action="traitement.php?action=down-qtt" method="post">,
-        }
-        
-     }
-
-   
+    header("location:index.php"); /*si les conditions ne sont pas remplies -false, null, 0- redirection sur le fichier d'origine*/
