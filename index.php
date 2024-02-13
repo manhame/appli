@@ -28,7 +28,7 @@
 
 
     <h1>Ajouter un produit</h1>
-    <form action="traitement.php" method="post">
+    <form action="traitement.php?action=add" method="post">
         <p>
             <label for="exampleInputText1"class="form_label">
                 Nom du produit :
@@ -43,17 +43,26 @@
                 <input type="number" class="form-control" step="any" name="price">
             
         </p>
-        <p>
-            <label for="exampleInputNumber1"class="form_label">
-                Quantité de produits :
-                </label>    
-                <input type="number" class="form-control" name="qtt" value="1">
-           
-        </p>
+        <!--
         <p>
             <input type="submit" class="btn btn-primary" name="submit" value="Ajouter un produit">
             
-        </p>
+        </p> -->
+
+        <label for="input-group"class="form_label">
+                    Quantité de produits :
+        </label>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary" type="button">-</button>
+            </div>
+      
+            <input type="submit" class="btn btn-outline-secondary" value="1">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button">+</button>
+            </div>
+        </div>
+
 
 <?php
 
