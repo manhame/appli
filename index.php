@@ -8,31 +8,16 @@
 </head>
 <body>
     <?php 
-    SESSION_start();
+    session_start();
 
-    if(isset($_POST['submit'])) { /*on vérifie si les variables stockées dans le tableau "$_POST" sont du type attendu*/
-
-        $name=filter_input(INPUT_POST,"name",FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $price=filter_input(INPUT_POST,"price",FILTER_VALIDATE_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
-        $qtt=filter_input(INPUT_POST,"qtt",FILTER_VALIDATE_INT);
-                
-        if($name&&$price&&$qtt) {
-
-            $product=[                /*on déclare la var $product qui est un tableau de type clés=>valeurs*/
-                "name"=>$name,
-                "price"=>$price,
-                "qtt"=>$qtt,
-                "total"=>$price*$qtt, /*on calcule la valeur supplémentaire du cahier des charges*/
-            ];
-    
-            $_SESSION['products'][]=$product;
+    //on garde ce code ici car on utilise la var $totalQtt juste après...
+    // >>>>>>>>>> On vérifie d'abord s'il y a des produits en session <<<<<<<<<<<<<<< 
+    if(isset($_SESSION['products'])) {
+    $totalQtt = 0;
+        foreach($_SESSION['products'] as $index=>$product) {
+            $totalQtt+=$product['qtt'];
         }
-    }    
-
-     $totalQtt = 0;
-     foreach($_SESSION['products'] as $index=>$product) {
-         $totalQtt+=$product['qtt'];
-     }   
+    }       
     ?>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark d-flex justify-content-between pe-3 py-3">
 <ul class="navbar-nav ">
@@ -63,6 +48,10 @@
                 <input type="number" class="form-control" step="any" name="price">
             
         </p>
+            <label for="exampleInputNumber2"class="form_label">
+                Quantité :
+                </label>
+                <input type="number" class="form-control" step="any" name="qtt">
         
         <p>
             <input type="submit" class="btn btn-primary" name="submit" value="Valider">
@@ -84,16 +73,8 @@
             </div>
         </div>
 
-<!-- Lien pour ajouter un article du panier -->
-<form action="traitement.php?action=add" method="post">
 
-<!-- Lien pour supprimer un article du panier -->
-<a href="traitement.php?action=delete&id=['product']['index']" class="btn btn-danger">Supprimer cet article</a>
-
-<!-- Lien pour vider le panier -->
-<a href="traitement.php?action=clear" class="btn btn-danger">Vider le panier</a>
-
-<!-- script js pour "actionner" les boutons "Bootstrap" -->
+<!-- script js pour "actionner" les boutons "Bootstrap" pas nécessaire; input type number préférables-->
 
 <script>
     //on "écoute" le click du boutton représenté par "id increase"
@@ -112,6 +93,7 @@
             }
     });
 </script>
+
 
 <?php
 

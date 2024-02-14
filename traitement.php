@@ -1,5 +1,11 @@
+
 <?php
-    SESSION_start();
+
+//Fichier qui traite des éléments non visibles
+
+//https://www.php.net/manual/fr/intro.session.php
+
+    session_start();
     
 
     if(isset($_GET['action'])){
@@ -21,8 +27,18 @@ case 'add':
                 "qtt" => $qtt,
                 "total" => $price * $qtt,
             ];
+            $_SESSION['products'][]=$product;
+            $_SESSION['message']="Le produit a bien été ajouté";
+            header("location:index.php");
+            die;
+        }
+            else{
+            $_SESSION['message']="Echec";
+            header("location:index.php");
+            die;    
+            }
 
-            if (!isset($_SESSION['products'])) {
+      /*      if (!isset($_SESSION['products'])) {
                 $_SESSION['products'] = [];
             }
 
@@ -42,13 +58,16 @@ case 'add':
             }
 
             $_SESSION['message'] = "Le produit a bien été ajouté";
-        } else {
+        }      
+            else {
             $_SESSION['message'] = "Echec, veuillez réessayer";
-        }
+        
         header("location:index.php");
         die;
+        break;
+*/
     }
-    break;
+    
 
   //FONCTIONNALITE SUPPRESSION DE PRODUIT              
 
@@ -77,11 +96,15 @@ case 'add':
                 header("location:index.php");
                 die;
             break;
+
+
 //FONCTIONNALITE MODIFICATION QUANTITE +
-            case 'up_qtt' : up_qtt($_SESSION[$product]['qtt']++);
+            case 'upqtt' : 
+                ($_SESSION[$product]['qtt']++);
             break;
 // FONCTIONNALITE MODIFICATION QUANTITE -
-            case 'down_qtt' :down_qtt($_SESSION[$product]['qtt']--);
+            case 'downqtt' :
+                ($_SESSION[$product]['qtt']--);
             break;         
         }
     }

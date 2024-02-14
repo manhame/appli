@@ -1,6 +1,6 @@
 
 <?php /*ce fichier doit permettre de lister tous les $product en session et le total obtenu*/
-    SESSION_start(); /* on rappelle la session ouverte par l'utilisateur*/
+    session_start(); /* on rappelle la session ouverte par l'utilisateur*/
     ?>
 
 <!DOCTYPE html>
@@ -15,13 +15,14 @@
  
 </head>
 <body>
-    <?php // var_dump($_SESSION);?> <!--on s'assure que le tableau "SESSION" contient des données
+    <?php  var_dump($_SESSION);?> <!--on s'assure que le tableau "SESSION" contient des données
 permet aussi de voir si le fichier "traitement.php" fonctionne bien et de visualiser comment
 nous allons pouvoir appeler notre récap-->
     
     <?php 
         $totalQtt = 0;
-        foreach($_SESSION['products'] as $index=>$product) {
+
+        foreach ($_SESSION['products'] as $index => $product) {
             
             $totalQtt+=$product['qtt'];
         }   
@@ -69,17 +70,23 @@ nous allons pouvoir appeler notre récap-->
                 $totalQtt+=$product['qtt'];
             }   
               
-                    echo "</tr>",
-                    "</tbody>",
+                echo "<tr>",
+                        "<td colspan=4>Total général : </td>",
+                        "<td><strong>".number_format($totalGeneral, 2, ",", "&nbsp;")."&nbsp;€</strong></td>",
+                    "</tr>",
+                    
+//Lien pour supprimer un article du panier
+           //     "<a href=traitement.php?action=delete&id=['product']['index'] class='btn btn-danger'>Supprimer cet article</a>",
+                    
+//Lien pour vider le panier
+            //    "<a href=traitement.php?action=clear class='btn btn-danger'>Vider le panier</a>",
+
+    "</tbody>";
                 
-                   "</table>";
+    "</table>";
                
             }
                            
-
-            
-                    
-
     ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
