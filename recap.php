@@ -1,6 +1,6 @@
 
 <?php /*ce fichier doit permettre de lister tous les $product en session et le total obtenu*/
-    session_start(); /* on rappelle la session ouverte par l'utilisateur*/
+    SESSION_start(); /* on rappelle la session ouverte par l'utilisateur*/
     ?>
 
 <!DOCTYPE html>
